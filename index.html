@@ -3,71 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Pages Site</title>
+
+  <!-- Force dark mode -->
+  <meta name="color-scheme" content="dark">
+
+  <title>Current Projects</title>
 
   <style>
+    :root {
+      color-scheme: dark;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #121212;
+      color: #ffffff;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+    }
+
+    .page {
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 3rem;
+      color: #ffffff;
     }
 
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      width: 90%;
-      max-width: 900px;
     }
 
     .card {
-      background: white;
+      background: #1e1e1e;
+      border: 1px solid #2f2f2f;
       border-radius: 12px;
       padding: 40px 20px;
       text-align: center;
       text-decoration: none;
-      color: #222;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease,
+                  border-color 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      border-color: #4da3ff;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
     }
 
     .card h2 {
       margin-top: 0;
+      margin-bottom: 10px;
     }
 
     .card p {
-      color: #666;
+      color: #bbbbbb;
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="page">
+    <h1>Current Projects</h1>
 
-    <a class="card" href="https://example.com/page1" target="_blank">
-      <h2>Project One</h2>
-      <p>Go to the first link</p>
-    </a>
+    <div class="container">
 
-    <a class="card" href="https://example.com/page2" target="_blank">
-      <h2>Project Two</h2>
-      <p>Go to the second link</p>
-    </a>
+      <a class="card" href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en&pli=1" target="_blank">
+        <h2>Abyssium</h2>
+        <p>Find on Google Play Store</p>
+      </a>
 
-    <a class="card" href="https://example.com/page3" target="_blank">
-      <h2>Project Three</h2>
-      <p>Go to the third link</p>
-    </a>
+      <a class="card" href="https://lastheartstudios.github.io/" target="_blank">
+        <h2>Project Two</h2>
+        <p>Coming Soon...</p>
+      </a>
 
+      <a class="card" href="https://lastheartstudios.github.io/" target="_blank">
+        <h2>Project Three</h2>
+        <p>Coming Soon...</p>
+      </a>
+
+    </div>
   </div>
 
 </body>
