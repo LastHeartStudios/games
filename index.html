@@ -104,8 +104,31 @@
       flex-wrap: wrap;
     }
 
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
     .card-header h2 {
       font-size: 2rem;
+    }
+
+    .platform-tag {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .released-tag {
+      background: #1f9d55;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      box-shadow: 0 0 15px rgba(31, 157, 85, 0.4);
     }
 
     .btn {
@@ -187,7 +210,14 @@
       <div class="card">
 
         <div class="card-header">
-          <h2>Abyssium</h2>
+
+          <div class="title-row">
+            <h2>Abyssium</h2>
+
+            <span class="platform-tag">for Android</span>
+
+            <span class="released-tag">Released</span>
+          </div>
 
           <a
             class="btn"
