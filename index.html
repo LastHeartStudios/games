@@ -19,7 +19,6 @@
     :root {
       --bg: #0b0b0f;
       --card: #15151c;
-      --card-light: #1d1d27;
       --text: #f3f3f7;
       --muted: #9c9cb0;
       --accent: #7c5cff;
@@ -70,10 +69,11 @@
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.95;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1;
       margin-bottom: 1.5rem;
       letter-spacing: -0.05em;
+      white-space: nowrap;
     }
 
     .highlight {
@@ -86,46 +86,6 @@
       font-size: 1.1rem;
       max-width: 620px;
       margin-bottom: 2rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.95rem 1.4rem;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.25s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 0 30px var(--glow);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      border-color: var(--border);
-      color: var(--text);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-2px);
     }
 
     .hero-card {
@@ -146,11 +106,33 @@
       pointer-events: none;
     }
 
+    .card-button {
+      margin-top: 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.4rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s ease;
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 30px var(--glow);
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     .stat {
@@ -261,7 +243,7 @@
     .cta p {
       color: var(--muted);
       max-width: 650px;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto;
       position: relative;
       z-index: 2;
     }
@@ -276,7 +258,7 @@
     .divider {
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
-      margin: 3rem 0;
+      margin: 2rem 0;
     }
 
     @media (max-width: 768px) {
@@ -289,12 +271,8 @@
         gap: 2rem;
       }
 
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
+      h1 {
+        white-space: normal;
       }
 
       .stat-grid {
@@ -323,23 +301,6 @@
             and atmosphere. Enter the abyss and survive endless dungeon combat
             in our latest action RPG.
           </p>
-
-          <div class="buttons">
-            <a 
-              class="btn btn-primary"
-              href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
-              target="_blank"
-            >
-              Download Abyssium
-            </a>
-
-            <a 
-              class="btn btn-secondary"
-              href="#features"
-            >
-              Explore Features
-            </a>
-          </div>
         </div>
 
         <div class="hero-card">
@@ -351,6 +312,14 @@
             A dark roguelike dungeon crawler where every floor becomes more
             dangerous than the last.
           </p>
+
+          <a
+            class="card-button"
+            href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
+            target="_blank"
+          >
+            Download Abyssium
+          </a>
 
           <div class="divider"></div>
 
@@ -448,14 +417,6 @@
           Enter the dungeon, battle relentless enemies, and see how far you
           can survive in Abyssium — the dark action RPG from Last Heart.
         </p>
-
-        <a 
-          class="btn btn-primary"
-          href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
-          target="_blank"
-        >
-          Get Abyssium on Google Play
-        </a>
 
       </div>
     </div>
