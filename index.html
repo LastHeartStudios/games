@@ -2,443 +2,472 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Last Heart - Abyssium</title>
 
-  <!-- Force Dark Mode -->
-  <meta name="color-scheme" content="dark">
-
-  <title>Last Heart</title>
-
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      color-scheme: dark;
-
-      --bg: #0b0f19;
-      --card: rgba(255,255,255,0.08);
-      --border: rgba(255,255,255,0.12);
-      --text: #ffffff;
-      --muted: #a0a7b5;
-      --accent: #58a6ff;
-      --glow: rgba(88,166,255,0.55);
-    }
-
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #0b0b0f;
+      --card: #15151c;
+      --card-light: #1d1d27;
+      --text: #f3f3f7;
+      --muted: #9c9cb0;
+      --accent: #7c5cff;
+      --accent-hover: #9a82ff;
+      --border: rgba(255,255,255,0.08);
+      --glow: rgba(124, 92, 255, 0.35);
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, #16213e 0%, transparent 30%),
-        radial-gradient(circle at bottom right, #0f3460 0%, transparent 25%),
-        linear-gradient(135deg, #090b10, #111827);
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #161622 0%, #0b0b0f 45%);
       color: var(--text);
-      min-height: 100vh;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    .page {
-      width: 92%;
-      max-width: 1400px;
-      margin: auto;
-      padding: 60px 0;
+    .container {
+      width: min(1150px, 92%);
+      margin: 0 auto;
     }
 
-    /* HEADER */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
     .hero {
-      text-align: center;
-      margin-bottom: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      margin: 0;
-      letter-spacing: 1px;
-      text-shadow: 0 0 20px var(--glow);
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(124, 92, 255, 0.12);
+      border: 1px solid rgba(124, 92, 255, 0.25);
+      color: #c6bbff;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.05em;
+    }
+
+    .highlight {
+      color: var(--accent);
+      text-shadow: 0 0 25px var(--glow);
     }
 
     .hero p {
-      margin-top: 15px;
       color: var(--muted);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin-bottom: 2rem;
     }
 
-    /* GRID */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-    }
-
-    /* CARDS */
-    .card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 22px;
-      text-decoration: none;
-      color: white;
-
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-
-      border: 1px solid var(--border);
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,0.45);
-    }
-
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-
-      border-color: var(--accent);
-
-      box-shadow:
-        0 0 25px rgba(88,166,255,0.25),
-        0 12px 40px rgba(0,0,0,0.65);
-    }
-
-    /* PREVIEW IMAGE */
-    .preview-wrapper {
-      position: relative;
-      overflow: hidden;
-      height: 220px;
-    }
-
-    .preview-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      transition:
-        transform 0.5s ease,
-        filter 0.3s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.05);
-      filter: brightness(1.08);
-    }
-
-    /* OVERLAY */
-    .overlay {
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,0.72),
-          rgba(0,0,0,0.05)
-        );
-
-      display: flex;
-      align-items: flex-end;
-      padding: 18px;
-    }
-
-    /* CONTENT */
-    .content {
-      padding: 22px;
-    }
-
-    .top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .title-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .favicon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: white;
-    }
-
-    .content h2 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-
-    .status {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-
-    .online {
-      background: rgba(46, 204, 113, 0.2);
-      color: #6dff9c;
-      border: 1px solid rgba(46, 204, 113, 0.45);
-    }
-
-    .beta {
-      background: rgba(241, 196, 15, 0.15);
-      color: #ffd54d;
-      border: 1px solid rgba(241,196,15,0.35);
-    }
-
-    .dev {
-      background: rgba(231, 76, 60, 0.15);
-      color: #ff8a80;
-      border: 1px solid rgba(231,76,60,0.35);
-    }
-
-    .description {
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    /* BUTTONS */
     .buttons {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .btn {
-      padding: 10px 16px;
-      border-radius: 12px;
-      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.4rem;
+      border-radius: 14px;
       text-decoration: none;
-      transition: 0.2s ease;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
-    .primary {
+    .btn-primary {
       background: var(--accent);
       color: white;
+      box-shadow: 0 0 30px var(--glow);
     }
 
-    .primary:hover {
-      background: #7cc0ff;
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
-    .secondary {
-      border: 1px solid rgba(255,255,255,0.15);
+    .btn-secondary {
+      border-color: var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, var(--card), #0f0f16);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(124,92,255,0.35), transparent 40%);
+      pointer-events: none;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.25rem;
+      border-radius: 18px;
+    }
+
+    .stat h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
       color: white;
-      background: rgba(255,255,255,0.05);
     }
 
-    .secondary:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      margin-top: 60px;
+    .stat p {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    /* MOBILE */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,92,255,0.45);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(124,92,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .cta {
+      background: linear-gradient(145deg, #171723, #101018);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124,92,255,0.18), transparent 70%);
+      top: -250px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+      margin: 3rem 0;
+    }
+
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.6rem;
+      header {
+        padding: 5rem 0;
+        min-height: auto;
       }
 
-      .preview-wrapper {
-        height: 180px;
+      .hero {
+        gap: 2rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="page">
+  <header>
+    <div class="container">
+      <div class="hero">
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Last Heart</h1>
-      <p>Current and upcoming projects.</p>
-    </section>
+        <div>
+          <div class="badge">
+            🎮 Indie Mobile Game Studio
+          </div>
 
-    <!-- PROJECT GRID -->
+          <h1>
+            LAST <span class="highlight">HEART</span>
+          </h1>
+
+          <p>
+            Crafting dark, immersive mobile experiences with style, challenge,
+            and atmosphere. Enter the abyss and survive endless dungeon combat
+            in our latest action RPG.
+          </p>
+
+          <div class="buttons">
+            <a 
+              class="btn btn-primary"
+              href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
+              target="_blank"
+            >
+              Download Abyssium
+            </a>
+
+            <a 
+              class="btn btn-secondary"
+              href="#features"
+            >
+              Explore Features
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h2 style="font-size:2rem; margin-bottom:0.5rem;">
+            Abyssium
+          </h2>
+
+          <p style="color: var(--muted);">
+            A dark roguelike dungeon crawler where every floor becomes more
+            dangerous than the last.
+          </p>
+
+          <div class="divider"></div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <h3>⚔️</h3>
+              <p>Fast-paced hack & slash combat</p>
+            </div>
+
+            <div class="stat">
+              <h3>🕳️</h3>
+              <p>Endless randomized dungeon floors</p>
+            </div>
+
+            <div class="stat">
+              <h3>👾</h3>
+              <p>Dangerous monsters and bosses</p>
+            </div>
+
+            <div class="stat">
+              <h3>📱</h3>
+              <p>Available now on Google Play</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <section id="features">
     <div class="container">
 
-      <!-- PROJECT 1 -->
-      <div class="card">
+      <h2 class="section-title">
+        Why Players Enter the Abyss
+      </h2>
 
-        <div class="preview-wrapper">
+      <p class="section-subtitle">
+        Abyssium combines arcade-style action with roguelike progression,
+        delivering a challenging mobile experience built for both casual and
+        hardcore players.
+      </p>
 
-          <!-- AUTO WEBSITE SCREENSHOT -->
-          <img
-            src="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
-            alt="Abyssium Preview"
-          >
+      <div class="features">
 
-          <div class="overlay"></div>
+        <div class="feature">
+          <div class="feature-icon">⚔️</div>
+          <h3>Action Combat</h3>
+          <p>
+            Smooth controls and responsive gameplay create satisfying,
+            high-speed dungeon battles.
+          </p>
         </div>
 
-        <div class="content">
-
-          <div class="top-row">
-            <div class="title-area">
-
-              <!-- FAVICON -->
-              <img
-                class="favicon"
-                src="https://www.google.com/s2/favicons?domain=https://play-lh.googleusercontent.com/3dYalH99PZQAipTk98e8O3vyhhA2ps2gqzNXbNIxZPaMJL9M-ptmjDSIJNHWXhH2Rw=w480-h960-rw&sz=64"
-                alt=""
-              >
-
-              <h2>Abyssium</h2>
-            </div>
-
-            <div class="status online">
-              LIVE
-            </div>
-          </div>
-
-          <div class="description">
-            Modern dashboard application with responsive UI,
-            real-time updates, and cloud deployment.
-          </div>
-
-          <div class="buttons">
-            <a class="btn primary"
-               href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
-               target="_blank">
-              Visit Google Play Store
-            </a>
-          </div>
-
+        <div class="feature">
+          <div class="feature-icon">🧩</div>
+          <h3>Roguelike Progression</h3>
+          <p>
+            Every run is different with randomized dungeon layouts,
+            escalating difficulty, and strategic upgrades.
+          </p>
         </div>
+
+        <div class="feature">
+          <div class="feature-icon">👹</div>
+          <h3>Epic Bosses</h3>
+          <p>
+            Face brutal enemies and survive increasingly dangerous encounters
+            deep within the abyss.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🌑</div>
+          <h3>Dark Atmosphere</h3>
+          <p>
+            A moody visual style and mysterious world create a haunting
+            dungeon-crawling adventure.
+          </p>
+        </div>
+
       </div>
-
-      <!-- PROJECT 2 -->
-      <div class="card">
-
-        <div class="preview-wrapper">
-          <img
-            src="https://s.wordpress.com/mshots/v1/https://openai.com?w=1200"
-            alt="Project Two Preview"
-          >
-
-          <div class="overlay"></div>
-        </div>
-
-        <div class="content">
-
-          <div class="top-row">
-            <div class="title-area">
-
-              <img
-                class="favicon"
-                src="https://www.google.com/s2/favicons?domain=openai.com&sz=64"
-                alt=""
-              >
-
-              <h2>Project Two</h2>
-            </div>
-
-            <div class="status beta">
-              BETA
-            </div>
-          </div>
-
-          <div class="description">
-            AI-powered utilities with automation workflows,
-            analytics, and integrated APIs.
-          </div>
-
-          <div class="buttons">
-            <a class="btn primary"
-               href="https://openai.com"
-               target="_blank">
-              Open Project
-            </a>
-
-            <a class="btn secondary"
-               href="https://github.com/"
-               target="_blank">
-              GitHub Repo
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- PROJECT 3 -->
-      <div class="card">
-
-        <div class="preview-wrapper">
-          <img
-            src="https://s.wordpress.com/mshots/v1/https://github.com?w=1200"
-            alt="Project Three Preview"
-          >
-
-          <div class="overlay"></div>
-        </div>
-
-        <div class="content">
-
-          <div class="top-row">
-            <div class="title-area">
-
-              <img
-                class="favicon"
-                src="https://www.google.com/s2/favicons?domain=github.com&sz=64"
-                alt=""
-              >
-
-              <h2>Project Three</h2>
-            </div>
-
-            <div class="status dev">
-              DEV
-            </div>
-          </div>
-
-          <div class="description">
-            Experimental development environment for testing
-            frontend concepts and interactive components.
-          </div>
-
-          <div class="buttons">
-            <a class="btn primary"
-               href="https://github.com"
-               target="_blank">
-              Open Project
-            </a>
-
-            <a class="btn secondary"
-               href="https://github.com/"
-               target="_blank">
-              GitHub Repo
-            </a>
-          </div>
-
-        </div>
-      </div>
-
     </div>
+  </section>
 
-    <footer>
-      Built with GitHub Pages • Dark Mode Enabled
-    </footer>
+  <section>
+    <div class="container">
+      <div class="cta">
 
-  </div>
+        <h2>
+          Ready to Descend?
+        </h2>
+
+        <p>
+          Enter the dungeon, battle relentless enemies, and see how far you
+          can survive in Abyssium — the dark action RPG from Last Heart.
+        </p>
+
+        <a 
+          class="btn btn-primary"
+          href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
+          target="_blank"
+        >
+          Get Abyssium on Google Play
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>
+        © 2026 Last Heart. All rights reserved.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
