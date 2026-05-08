@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My GitHub Pages Site</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #222;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .card p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <a class="card" href="https://example.com/page1" target="_blank">
+      <h2>Project One</h2>
+      <p>Go to the first link</p>
+    </a>
+
+    <a class="card" href="https://example.com/page2" target="_blank">
+      <h2>Project Two</h2>
+      <p>Go to the second link</p>
+    </a>
+
+    <a class="card" href="https://example.com/page3" target="_blank">
+      <h2>Project Three</h2>
+      <p>Go to the third link</p>
+    </a>
+
+  </div>
+
+</body>
+</html>
