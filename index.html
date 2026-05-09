@@ -1,261 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Last Heart</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Last Heart</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-    :root {
-      --bg: #0b0b0f;
-      --card: #15151c;
-      --text: #f3f3f7;
-      --muted: #b0a0a0;
+:root {
+--bg: #0b0b0f;
+--card: #15151c;
+--text: #f3f3f7;
+--muted: #9c9cb0;
+--accent: #7c5cff;
+--accent-hover: #9a82ff;
+--border: rgba(255,255,255,0.08);
+--glow: rgba(124, 92, 255, 0.35);
+}
 
-      /* RED THEME */
-      --accent: #d81e25;
-      --accent-hover: #f03840;
-      --border: rgba(255,255,255,0.08);
-      --glow: rgba(216, 30, 37, 0.35);
-    }
+body {
+font-family: 'Inter', sans-serif;
+background: radial-gradient(circle at top, #161622 0%, #0b0b0f 45%);
+color: var(--text);
+line-height: 1.6;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #2a1012 0%, #0b0b0f 45%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+.container {
+width: min(900px, 92%);
+margin: 0 auto;
+}
 
-    .container {
-      width: min(900px, 92%);
-      margin: 0 auto;
-    }
+header {
+padding: 5rem 0 3rem;
+}
 
-    header {
-      padding: 5rem 0 3rem;
-    }
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+background: rgba(124, 92, 255, 0.12);
+border: 1px solid rgba(124, 92, 255, 0.25);
+color: #c6bbff;
+padding: 0.55rem 1rem;
+border-radius: 999px;
+font-size: 0.85rem;
+margin-bottom: 1.5rem;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(216, 30, 37, 0.12);
-      border: 1px solid rgba(216, 30, 37, 0.3);
-      color: #ffb3b6;
-      padding: 0.55rem 1rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-    }
+h1 {
+font-size: clamp(3rem, 8vw, 5rem);
+line-height: 1;
+margin-bottom: 1rem;
+letter-spacing: -0.05em;
+white-space: nowrap;
+}
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 5rem);
-      line-height: 1;
-      margin-bottom: 1rem;
-      letter-spacing: -0.05em;
-      white-space: nowrap;
-    }
+.highlight {
+color: #d81e25;
+text-shadow: 0 0 25px rgba(216, 30, 37, 0.45);
+}
 
-    .highlight {
-      color: var(--accent);
-      text-shadow: 0 0 25px var(--glow);
-    }
+.subtitle {
+color: var(--muted);
+font-size: 1.1rem;
+margin-bottom: 3rem;
+}
 
-    .subtitle {
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-    }
+.card {
+background: linear-gradient(145deg, var(--card), #0f0f16);
+border: 1px solid var(--border);
+border-radius: 28px;
+padding: 2rem;
+position: relative;
+overflow: hidden;
+box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+}
 
-    .card {
-      background: linear-gradient(145deg, var(--card), #140c0d);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 25px 80px rgba(0,0,0,0.45);
-    }
+.card::before {
+content: "";
+position: absolute;
+inset: 0;
+background: radial-gradient(circle at top right, rgba(124,92,255,0.25), transparent 45%);
+pointer-events: none;
+}
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top right,
-        rgba(216, 30, 37, 0.22),
-        transparent 45%
-      );
-      pointer-events: none;
-    }
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 1rem;
+margin-bottom: 1rem;
+position: relative;
+z-index: 2;
+flex-wrap: wrap;
+}
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 2;
-      flex-wrap: wrap;
-    }
+.title-row {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+flex-wrap: wrap;
+}
 
-    .title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
+.card-header h2 {
+font-size: 2rem;
+}
 
-    .card-header h2 {
-      font-size: 2rem;
-    }
+.platform-tag {
+font-size: 0.85rem;
+color: var(--muted);
+font-weight: 500;
+}
 
-    .platform-tag {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
+.released-tag {
+background: #1f9d55;
+color: white;
+font-size: 0.75rem;
+font-weight: 600;
+padding: 0.35rem 0.7rem;
+border-radius: 999px;
+box-shadow: 0 0 15px rgba(31, 157, 85, 0.4);
+}
 
-    .released-tag {
-      background: #d81e25;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      box-shadow: 0 0 15px rgba(216, 30, 37, 0.45);
-    }
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0.85rem 1.2rem;
+border-radius: 14px;
+text-decoration: none;
+font-weight: 600;
+background: var(--accent);
+color: white;
+box-shadow: 0 0 30px var(--glow);
+transition: 0.25s ease;
+white-space: nowrap;
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.85rem 1.2rem;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 0 30px var(--glow);
-      transition: 0.25s ease;
-      white-space: nowrap;
-    }
+.btn:hover {
+background: var(--accent-hover);
+transform: translateY(-2px);
+}
 
-    .btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
+.desc {
+color: var(--muted);
+margin-bottom: 1.5rem;
+position: relative;
+z-index: 2;
+}
 
-    .desc {
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 2;
-    }
+.image-wrap {
+position: relative;
+z-index: 2;
+border-radius: 18px;
+overflow: hidden;
+border: 1px solid rgba(255,255,255,0.08);
+}
 
-    .image-wrap {
-      position: relative;
-      z-index: 2;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+.image-wrap img {
+width: 100%;
+display: block;
+object-fit: cover;
+}
 
-    .image-wrap img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
+footer {
+padding: 3rem 0;
+text-align: center;
+color: var(--muted);
+font-size: 0.95rem;
+}
 
-    footer {
-      padding: 3rem 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+@media (max-width: 768px) {
+h1 {
+white-space: normal;
+}
 
-    @media (max-width: 768px) {
-      h1 {
-        white-space: normal;
-      }
+.card-header {
+flex-direction: column;
+align-items: flex-start;
+}
 
-      .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-  </style>
+.btn {
+width: 100%;
+}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="container">
+<header>
+<div class="container">
 
+      <div class="badge">🎮 Indie Game Studio</div>
       <div class="badge">Indie Game Studio</div>
 
-      <h1>LAST <span class="highlight">HEART</span></h1>
+<h1>LAST <span class="highlight">HEART</span></h1>
 
-      <p class="subtitle">Current and upcoming projects</p>
+<p class="subtitle">Current and upcoming projects</p>
 
-      <div class="card">
+<div class="card">
 
-        <div class="card-header">
+<div class="card-header">
 
-          <div class="title-row">
-            <h2>Abyssium</h2>
+<div class="title-row">
+<h2>Abyssium</h2>
 
-            <span class="platform-tag">for Android</span>
+<span class="platform-tag">for Android</span>
 
-            <span class="released-tag">Released</span>
-          </div>
+<span class="released-tag">Released</span>
+</div>
 
-          <a
-            class="btn"
-            href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
-            target="_blank"
-          >
-            Visit Google Play
-          </a>
-        </div>
+<a
+class="btn"
+href="https://play.google.com/store/apps/details?id=com.lastheart.abyssium&hl=en"
+target="_blank"
+>
+Visit Google Play
+</a>
+</div>
 
-        <p class="desc">
-          A dark roguelike dungeon crawler where every floor becomes more
-          dangerous than the last.
-        </p>
+<p class="desc">
+A dark roguelike dungeon crawler where every floor becomes more
+dangerous than the last.
+</p>
 
-        <div class="image-wrap">
-          <img
-            src="https://play-lh.googleusercontent.com/9Dz2Yp2Hm-K4tsQEXHQJnp15qey9lisKYzi42nlIV--zSgibFmEelC5nHK8VrUcousA=w5120-h2880-rw"
-            alt="Abyssium Google Play Preview"
-          />
-        </div>
+<div class="image-wrap">
+<img
+src="https://play-lh.googleusercontent.com/9Dz2Yp2Hm-K4tsQEXHQJnp15qey9lisKYzi42nlIV--zSgibFmEelC5nHK8VrUcousA=w5120-h2880-rw"
+alt="Abyssium Google Play Preview"
+/>
+</div>
 
-      </div>
+</div>
 
-    </div>
-  </header>
+</div>
+</header>
 
-  <footer>
-    <div class="container">
-      © 2026 Last Heart. All rights reserved.
-    </div>
-  </footer>
+<footer>
+<div class="container">
+© 2026 Last Heart. All rights reserved.
+</div>
+</footer>
 
 </body>
 </html>
